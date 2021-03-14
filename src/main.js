@@ -14,7 +14,7 @@ import store from './store/store'
 
 var axios = require('axios')
 
-axios.defaults.baseURL = 'http://192.168.1.147:8080/ims'
+axios.defaults.baseURL = 'http://localhost:8080/ims'
 
 Vue.prototype.$axios = axios
 Vue.prototype.$echarts = echarts
