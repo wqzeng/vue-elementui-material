@@ -24,21 +24,17 @@
       >
         <el-table-column label="ID" prop="id"></el-table-column>
 
-        <el-table-column label="工号" prop="jobNum"></el-table-column>
-
-        <el-table-column label="密码" prop="passWord" v-if="flag4"></el-table-column>
-
         <el-table-column label="姓名" prop="userName"></el-table-column>
 
-        <el-table-column label="联系电话" prop="userTel"></el-table-column>
+        <el-table-column label="登录名" prop="loginName"></el-table-column>
+
+        <el-table-column label="密码" prop="password" v-if="flag4"></el-table-column>
+
+        <el-table-column label="联系电话" prop="userMobile"></el-table-column>
 
         <el-table-column label="性别" prop="userSex"></el-table-column>
 
-        <el-table-column label="部门编号" prop="deptNum"></el-table-column>
-
-        <el-table-column label="部门" prop="deptName"></el-table-column>
-
-        <el-table-column label="职位" prop="job"></el-table-column>
+        <el-table-column label="职位" prop="deptNo"></el-table-column>
 
         <template slot="header">
           <el-input v-model="search" placeholder="输入关键字搜索" />
@@ -71,31 +67,31 @@
           <el-form-item label="姓名">
             <el-input v-model="addUser.userName"></el-input>
           </el-form-item>
-          <el-form-item label="账号">
-            <el-input v-model="addUser.jobNum" placeholder="请输入数字"></el-input>
+          <el-form-item label="昵称">
+            <el-input v-model="addUser.loginName"></el-input>
           </el-form-item>
           <el-form-item label="密码">
-            <el-input v-model="addUser.passWord"></el-input>
+            <el-input v-model="addUser.password"></el-input>
           </el-form-item>
           <el-form-item label="电话">
-            <el-input v-model="addUser.userTel"></el-input>
+            <el-input v-model="addUser.userMobile" placeholder="请输入数字"></el-input>
           </el-form-item>
           <el-form-item label="性别">
             <el-select v-model="addUser.userSex" placeholder="请选择性别">
-              <el-option label="男" value="男"></el-option>
-              <el-option label="女" value="女"></el-option>
+              <el-option label="男" value="1"></el-option>
+              <el-option label="女" value="2"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="部门">
-            <el-select v-model="addUser.deptName" placeholder="请选择部门">
-              <el-option label="采购部" value="采购部"></el-option>
-              <el-option label="库管部" value="库管部"></el-option>
-              <el-option label="物资部" value="物资部"></el-option>
+            <el-select v-model="addUser.deptNo" placeholder="请选择部门">
+              <el-option label="采购部" value="1"></el-option>
+              <el-option label="库管部" value="2"></el-option>
+              <el-option label="物资部" value="3"></el-option>
             </el-select>
           </el-form-item>
           <div class="addButton">
             <el-form-item>
-              <el-button type="primary" @click="addPeople()">提交</el-button>
+              <el-button type="primary" @click="addUser()">提交</el-button>
               <el-button @click="addRest()">重置</el-button>
             </el-form-item>
           </div>
@@ -116,22 +112,22 @@
             <el-input v-model="changeList.userName"></el-input>
           </el-form-item>
           <el-form-item label="密码">
-            <el-input v-model="changeList.passWord"></el-input>
+            <el-input v-model="changeList.password"></el-input>
           </el-form-item>
           <el-form-item label="电话">
-            <el-input v-model="changeList.userTel"></el-input>
+            <el-input v-model="changeList.userMobile"></el-input>
           </el-form-item>
           <el-form-item label="性别">
             <el-select v-model="changeList.userSex" placeholder="请选择性别">
-              <el-option label="男" value="男"></el-option>
-              <el-option label="女" value="女"></el-option>
+              <el-option label="男" value="1"></el-option>
+              <el-option label="女" value="2"></el-option>
             </el-select>
           </el-form-item>
           <el-form-item label="部门">
-            <el-select v-model="changeList.deptName" placeholder="请选择部门">
-              <el-option label="采购部" value="采购部"></el-option>
-              <el-option label="库管部" value="库管部"></el-option>
-              <el-option label="物资部" value="物资部"></el-option>
+            <el-select v-model="changeList.deptNo" placeholder="请选择部门">
+              <el-option label="采购部" value="1"></el-option>
+              <el-option label="库管部" value="2"></el-option>
+              <el-option label="物资部" value="3"></el-option>
             </el-select>
           </el-form-item>
           <div class="addButton">
@@ -180,35 +176,33 @@ export default {
       pagesize: 10,
       addUser: [
         {
-          JobNum:'',
+          loginName:'',
           userName: "",
-          passWord: "",
-          userTel: "",
+          password: "",
+          userMobile: "",
           userSex: "",
-          deptName: ""
+          deptNo: ""
         }
       ],
       changeList: [
         {
+          id:"",
           userName: "",
-          passWord: "",
-          userTel: "",
+          password: "",
+          userMobile: "",
           userSex: "",
-          deptName: ""
+          deptNo: ""
         }
       ],
       deleteList: [
         {
-          userName: "",
-          passWord: "",
-          userTel: "",
-          userSex: "",
-          deptName: "",
-          jobNum: ""
+          id:"",
+          loginName:"",
+          userName: ""
         }
       ],
       rules: {
-        account: [
+        loginName: [
           { required: true, message: "请输入账号", trigger: "blur" },
           { max: 10, message: "不能大于10个字符", trigger: "blur" }
         ],
@@ -216,11 +210,11 @@ export default {
           { required: true, message: "请输入密码", trigger: "blur" },
           { max: 10, message: "不能大于10个字符", trigger: "blur" }
         ],
-        jobnum: [
+        userMobile: [
           { required: true, message: "请输入电话", trigger: "blur" },
           { max: 10, message: "不能大于10个字符", trigger: "blur" }
         ],
-        name: [
+        userName: [
           { required: false, message: "请输入姓名", trigger: "blur" },
           { max: 10, message: "不能大于10个字符", trigger: "blur" }
         ],
@@ -248,17 +242,17 @@ export default {
     showAddUser() {
       this.flag = !this.flag;
     },
-    addPeople() {
+    addUser() {
       if(this.addUser.userName){
          let _this = this;
       this.$axios
         .post("/user", {
-          jobNum:_this.addUser.jobNum+_this.user.length+1,
+          loginName:_this.addUser.loginName,
           userName: _this.addUser.userName,
-          passWord: _this.addUser.passWord,
-          userTel: _this.addUser.userTel,
+          password: _this.addUser.password,
+          userMobile: _this.addUser.userMobile,
           userSex: _this.addUser.userSex,
-          deptName: _this.addUser.deptName
+          deptNo: _this.addUser.deptNo
         })
         .then(res => {
           if (res.data.code === 200) {
@@ -267,7 +261,6 @@ export default {
             // this.flag2=!this.flag2
             // this.$router.go(0)
             this.reload();
-            console.log(_this.addUser.jobNum+_this.addUser.length+1)
           }
         })
         .catch(function(err) {
@@ -284,12 +277,13 @@ export default {
       let _this = this;
       this.$axios
         .put("/user", {
+          id:_this.changeList.id,
           userName: _this.changeList.userName,
-          passWord: _this.changeList.passWord,
-          userTel: _this.changeList.userTel,
+          password: _this.changeList.password,
+          userMobile: _this.changeList.userMobile,
           userSex: _this.changeList.userSex,
-          deptName: _this.changeList.deptName,
-          jobNum: _this.changeList.jobNum
+          deptNo: _this.changeList.deptNo,
+          loginName: _this.changeList.loginName
         })
         .then(res => {
           if (res.data.code === 200) {
@@ -308,15 +302,16 @@ export default {
         });
     },
     deleteInfo() {
-      if(this.deleteList.jobNum=='0001'){
+      console.log("loginName:"+sessionStorage.getItem('loginName'));
+      if(sessionStorage.getItem('loginName')!='admin'){
         this.$message('没有权限')
       }else{
-      let _this = this;
-      console.log(_this.deleteList.jobNum);
+        let _this = this;
       this.$axios
         .delete("/user", {
           data: {
-            jobNum: _this.deleteList.jobNum
+            id: _this.deleteList.id,
+            loginName: _this.deleteList.loginName
           }
         })
         .then(res => {
@@ -336,7 +331,7 @@ export default {
     },
 
     showDelete() {
-      if (this.deleteList.jobNum) {
+      if (this.deleteList.loginName) {
         this.flag3 = !this.flag3;
       } else {
         this.$message("请选择一条数据");
@@ -376,7 +371,7 @@ export default {
       this.$message("操作已取消");
     },
     showChange() {
-      if (this.changeList.jobNum) {
+      if (this.changeList.loginName) {
         this.flag2 = !this.flag2;
       } else {
         this.$message("请选择一条数据");

@@ -2,19 +2,9 @@
   <div>
     <div class="left-card">
       <el-card class="box-card">
-          <h3>前端</h3>
         <img src="../assets/WechatIMG2.jpeg" alt="">
-        <span>联系人：郭佳玉</span>
-        <div class="mail">邮箱：2434957426@qq.com</div>
-      </el-card>
-    </div>
-
-    <div class="right-card">
-      <el-card class="box-card">
-          <h3>后端</h3>
-        <img src="../assets/WechatIMG3.jpeg" alt="">
-        <span>联系人：孙原</span>
-        <div class="mail">邮箱：1908925010@qq.com</div>
+        <span>联系人：moke.tsang</span>
+        <div class="mail">邮箱：452887915@qq.com</div>
       </el-card>
     </div>
   </div>

@@ -1,10 +1,7 @@
 <template>
     <div>
-        <div class="updata">
-
-          
-        </div>
-      </div>
+        <div class="updata"></div>
+    </div>
 </template>
 
 <script>

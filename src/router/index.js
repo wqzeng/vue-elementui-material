@@ -2,10 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home.vue'
 import login from '@/components/login.vue'
-import zhuce from '@/components/zhuce.vue'
 import headTop from '@/components/headTop.vue'
 import someCharts from '@/page/someCharts.vue'
-import webMap from '@/page/webMap.vue'
 import userList from '@/page/userList.vue'
 import materialInfo from '@/page/materialInfo.vue'
 import peopleTable from '@/page/peopleTable.vue'
@@ -48,12 +46,6 @@ export default new Router({
           name: 'first',
           component : first,
           meta: { requireAuth:true },
-        },
-        {
-          path: '/home/webMap',
-          name: 'webMap',
-          component : webMap,
-          meta: { title: '地图' , requireAuth:true}
         },
         {
           path: '/home/userList',
@@ -133,12 +125,6 @@ export default new Router({
        
         
       ]
-    },
-    {
-      path: '/zhuce',
-      name: 'zhuce',
-      component: zhuce,
-      meta:{ requireAuth:true}
     },
     {
       path: '/headTop',

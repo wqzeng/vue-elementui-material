@@ -1,32 +1,8 @@
 <template>
   <div :style="height">
-
-    <div class="logo">
-      <!-- <input id="vhs" type="checkbox" /> -->
-      <!-- <label for="vhs">📼</label> -->
-      <div class="scene">
-        <div class="container">
-          <div class="sun"></div>
-          <div class="band" style="animation-delay: -0s"></div>
-          <div class="band" style="animation-delay: -1s"></div>
-          <div class="band" style="animation-delay: -2s"></div>
-          <div class="band" style="animation-delay: -3s"></div>
-          <div class="band" style="animation-delay: -4s"></div>
-          <div class="band" style="animation-delay: -5s"></div>
-          <div class="band" style="animation-delay: -6s"></div>
-          <div class="band" style="animation-delay: -7s"></div>
-          <div class="band" style="animation-delay: -8s"></div>
-          <div class="band" style="animation-delay: -9s"></div>
-        </div>
-      </div>
-
-      <img src="../assets/logoko3.png" alt="">
-    </div>
-
     <div class="login">
       <div class="login-box">
         <img src="../assets/logo.png" alt />
-
         <el-form
           ref="loginForm"
           :model="loginForm"
@@ -36,7 +12,7 @@
           <div class="login-field1">
             <label class="login-title" style="color:black"></label>
             <el-form-item prop="account">
-              <el-input placeholder="请输入账号" v-model="loginForm.account" clearable></el-input>
+              <el-input placeholder="请输入账号" v-model="loginForm.loginName" clearable></el-input>
             </el-form-item>
           </div>
 
@@ -48,8 +24,7 @@
           </div>
 
           <el-form-item size="small" class="me-login-button">
-            <el-button type="primary" class="login-button" @click="denglu">登陆</el-button>
-            <el-button type="primary" class="login-button">默认账号:0001  - 密码:123456</el-button>
+            <el-button type="primary" class="login-button" @click="login">登陆</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -63,7 +38,7 @@ export default {
   data() {
     return {
       loginForm: {
-        jobNum: "",
+        loginName: "",
         password: "",
         userName: ""
       },
@@ -73,7 +48,7 @@ export default {
 
       responseResult: [],
       rules: {
-        account: [
+        loginName: [
           { required: true, message: "请输入用户名", trigger: "blur" },
           { max: 10, message: "不能大于10个字符", trigger: "blur" }
         ],
@@ -90,21 +65,27 @@ export default {
   },
   inject: ["reload"],
   methods: {
-    denglu() {
+    login() {
       let flag = true;
       this.$store.commit('login',flag);
       let _this = this;
       this.$axios
         .post("/login", {
-          jobNum: this.loginForm.account,
-          passWord: this.loginForm.password,
+          loginName: this.loginForm.loginName,
+          password: this.loginForm.password,
           userName: this.loginForm.userName
         })
         .then(res => {
           if (res.data.code === 200) {
             this.$router.push({ path: "/home/first" });
             this.$store.commit("handleUserName", res.data.data.userName);
+            sessionStorage.setItem("loginName",res.data.data.loginName)
             this.$message("登陆成功");
+          }else if(res.data.code === 400){
+            this.$message({
+              type: 'error',
+              message: '账号密码有误'
+            });
           }
         })
         .catch(err => {
@@ -112,9 +93,6 @@ export default {
         });
     },
 
-    zhuce() {
-      this.$router.push({ path: "/zhuce" });
-    },
     hh() {
       this.height.height = window.innerHeight + "px";
     }
@@ -128,15 +106,16 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  /* background: url(./../assets/loginbg.jpg) no-repeat;
-		background-size: 100% 100%; */
+  background: url(./../assets/loginbg.jpg) no-repeat;
+  background-size: 100% 100%;
   /* background: linear-gradient(91deg, #f1eefc, #9dc6ff 70%, #a5bcff); */
 }
 .login {
   width: 100%;
   height: 100%;
+  background: url(./../assets/loginbg.jpg) no-repeat;
   /* background: linear-gradient(91deg, #f1eefc, #9dc6ff 70%, #a5bcff); */
-  background-color: #112;
+  /*background-color: #112;*/
 
 }
 .logo {
@@ -250,7 +229,7 @@ label {
   overflow: hidden;
 }
 
-.sun {
+/*.sun {
   position: absolute;
   top: 0;
   left: 50%;
@@ -262,9 +241,9 @@ label {
   border-radius: 50%;
   -webkit-animation: hue-rotate 60s ease-in-out infinite 5s;
           animation: hue-rotate 60s ease-in-out infinite 5s;
-}
+}*/
 
-.band {
+/*.band {
   position: absolute;
   bottom: -6vw;
   width: 100%;
@@ -272,8 +251,8 @@ label {
   background: #112;
   -webkit-animation: wave 10s linear infinite;
           animation: wave 10s linear infinite;
-}
-
+}*/
+/*
 @-webkit-keyframes wave {
   0% {
     -webkit-transform: translateY(0) scaleY(1);
@@ -314,6 +293,6 @@ label {
     -webkit-filter: hue-rotate(0deg);
             filter: hue-rotate(0deg);
   }
-}
+}*/
 
 </style>

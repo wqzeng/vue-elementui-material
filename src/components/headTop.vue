@@ -17,7 +17,7 @@
 
         <div class="messages">
           <div class="one">
-            <el-badge :value="3" class="item">
+            <el-badge :value="2" class="item">
               <i class="el-icon-message" @click="drawer = true"></i>
             </el-badge>
           </div>

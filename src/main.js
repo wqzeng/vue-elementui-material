@@ -6,7 +6,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
 import echarts from 'echarts'
-import bmap from 'vue-baidu-map'
 import './assets/normalize.css'
 import store from './store/store'
 
@@ -22,9 +21,9 @@ Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 
 
-Vue.use(bmap,{
-  ak : 'ybm7GO5cyZOsVS80dLuzBCKi306RfUrz'
-})
+// Vue.use(bmap,{
+//   ak : 'ybm7GO5cyZOsVS80dLuzBCKi306RfUrz'
+// })
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 

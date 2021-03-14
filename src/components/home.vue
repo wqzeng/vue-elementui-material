@@ -3,15 +3,11 @@
     <head-top></head-top>
     <el-container style="height:100%">
       <div style="border-right:1px solid #dcdfe6;" :style="height" class="leftm">
-
-  
         <el-aside width="200px">
-
-          
           <el-menu :default-active="$route.path" style="min-height: 100%;" router>
             <el-menu-item index="/home/first">
               <i class="el-icon-odometer"></i>
-              <span slot="title">物资采购系统</span>
+              <span slot="title">首页</span>
             </el-menu-item>
             
             <el-submenu index="2">
@@ -69,19 +65,14 @@
               </el-menu-item-group>
             </el-submenu>
 
-              <el-menu-item index="/home/webMap">
-              <i class="el-icon-discover"></i>
-              <span slot="title">地图查看</span>
-            </el-menu-item>
+<!--              <el-menu-item index="/home/webMap">-->
+<!--              <i class="el-icon-discover"></i>-->
+<!--              <span slot="title">地图查看</span>-->
+<!--            </el-menu-item>-->
 
             <el-menu-item index="/home/materialD">
               <i class="el-icon-s-claim"></i>
               <span slot="title">单据管理</span>
-            </el-menu-item>
-
-            <el-menu-item index="/home/callme">
-              <i class="el-icon-phone"></i>
-              <span slot="title">请联系我</span>
             </el-menu-item>
 
             <el-submenu index="5">
@@ -124,6 +115,10 @@
               </el-menu-item-group>
             </el-submenu>
 
+            <el-menu-item index="/home/callme">
+              <i class="el-icon-phone"></i>
+              <span slot="title">请联系我</span>
+            </el-menu-item>
           
           </el-menu>
         </el-aside>
@@ -148,7 +143,6 @@
 
 <script>
 import headTop from "./headTop.vue";
-import webMap from "../page/webMap.vue";
 import userList from "../page/userList";
 import charts from "../page/someCharts";
 import materialInfo from "../page/materialInfo";
@@ -164,7 +158,6 @@ export default {
   },
   components: {
     headTop,
-    webMap,
     navBar
   },
   mounted() {},
