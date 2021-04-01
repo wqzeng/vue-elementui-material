@@ -11,7 +11,6 @@ import store from './store/store'
 
 
 
-
 var axios = require('axios')
 
 axios.defaults.baseURL = 'http://localhost:8080/ims'
