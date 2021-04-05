@@ -8,6 +8,7 @@ import router from './router'
 import echarts from 'echarts'
 import './assets/normalize.css'
 import store from './store/store'
+import Moment from 'moment'
 
 
 
@@ -25,6 +26,11 @@ Vue.config.productionTip = false
 // })
 Vue.use(ElementUI)
 Vue.config.productionTip = false
+
+// 定义全局时间戳过滤器
+Vue.filter('formatDate', function(value) {
+  return Moment(value).format('YYYY-MM-DD HH:mm:ss')
+})
 
 /* eslint-disable no-new */
 new Vue({

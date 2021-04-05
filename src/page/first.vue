@@ -83,12 +83,6 @@
         </el-col>
       </el-row>
     </div>
-
-    <div class="welcome">
-      <el-card class="elcard20">
-        <div class="text2">WELCOME</div>
-      </el-card>
-    </div>
   </div>
 </template>
 
@@ -369,9 +363,9 @@ export default {
   text-align: center;
   /* padding-bottom: 50px; */
    /* height: 100vh; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
 }
 .elcard20 span {
   font-size: 100px;
@@ -393,14 +387,4 @@ export default {
   color: #409eff;
 }
 
-.elcard20 .text2 {
-  background: url(https://media.giphy.com/media/3o6Ztb45EYezY9x9gQ/giphy.gif);
-  background-size: contain;
-  background-position: top left;
-  -webkit-background-clip: text;
-  color: transparent;
-  font-size: 9rem;
-  font-weight: bold;
-  font-family: sans-serif;
-}
 </style>

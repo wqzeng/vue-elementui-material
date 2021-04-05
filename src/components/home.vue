@@ -4,106 +4,7 @@
     <el-container style="height:100%">
       <div style="border-right:1px solid #dcdfe6;" :style="height" class="leftm">
         <el-aside width="200px">
-          <el-menu :default-active="$route.path" style="min-height: 100%;" router>
-            <el-menu-item index="/home/first">
-              <i class="el-icon-odometer"></i>
-              <span slot="title">首页</span>
-            </el-menu-item>
-            <el-submenu index="2">
-              <template slot="title">
-                <i class="el-icon-shopping-bag-1"></i>
-                <span>进货管理</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="/home/needPlan">需求计划申请</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/needPlanp">需求计划审批</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/pruchase">请购</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/No">请购通过</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-submenu index="3">
-              <template slot="title">
-                <i class="el-icon-refresh"></i>
-                <span>销售管理</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="/home/No">物资接收</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/No">物资检验</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/No">物资入库</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/No">物资出库</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-submenu index="4">
-              <template slot="title">
-                <i class="el-icon-house"></i>
-                <span>库存管理</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="/home/No">仓库维护</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/No">货位维护</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/No">查看库存</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-submenu index="5">
-              <template slot="title">
-                <i class="el-icon-truck"></i>
-                <span>基础信息</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="/home/materialNum">物资编码申请</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/materialInfo">物资编码审批</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/materialD">打印物资数据</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-submenu index="6">
-              <template slot="title">
-                <i class="el-icon-aim"></i>
-                <span>系统管理</span>
-              </template>
-              <el-menu-item-group>
-                <el-menu-item index="/home/peopleTable">人员管理</el-menu-item>
-              </el-menu-item-group>
-
-              <el-menu-item-group>
-                <el-menu-item index="/home/deptList">部门管理</el-menu-item>
-              </el-menu-item-group>
-            </el-submenu>
-            <el-menu-item index="/home/callme">
-              <i class="el-icon-phone"></i>
-              <span slot="title">请联系我</span>
-            </el-menu-item>
-          
-          </el-menu>
+          <left-menu></left-menu>
         </el-aside>
       </div>
 
@@ -126,10 +27,10 @@
 
 <script>
 import headTop from "./headTop.vue";
-import userList from "../page/userList";
+import leftMenu from "./leftMenu"
 import charts from "../page/someCharts";
 import materialInfo from "../page/materialInfo";
-import navBar from "../components/navBar";
+import navBar from "./navBar";
 export default {
   data() {
     return {
@@ -141,7 +42,8 @@ export default {
   },
   components: {
     headTop,
-    navBar
+    navBar,
+    leftMenu
   },
   mounted() {},
   methods: {

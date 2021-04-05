@@ -175,7 +175,7 @@ body {
 }
 .messages {
   position: absolute;
-  right: 135px;
+  right: 136px;
   top: -2px;
 }
 .messages .one i {

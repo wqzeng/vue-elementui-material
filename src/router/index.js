@@ -4,12 +4,10 @@ import home from '@/components/home.vue'
 import login from '@/components/login.vue'
 import headTop from '@/components/headTop.vue'
 import someCharts from '@/page/someCharts.vue'
-import userList from '@/page/userList.vue'
-import materialInfo from '@/page/materialInfo.vue'
-import peopleTable from '@/page/peopleTable.vue'
-import navBar from '@/components/navBar.vue'
-import deptList from '@/page/deptList'
-import materialNum from '@/page/materialNum'
+import materialInfo from '../page/materialInfo.vue'
+import user from '../page/user/user.vue'
+import navBar from '../components/navBar.vue'
+import metadata from '../page/base/metadata'
 import first from '@/page/first'
 import callme from '@/page/callme'
 import materialD from '@/page/materialD'
@@ -46,12 +44,6 @@ export default new Router({
           name: 'first',
           component : first,
           meta: { requireAuth:true },
-        },
-        {
-          path: '/home/userList',
-          name: 'userList',
-          component : userList,
-          // meta:{ title: '人员管理' }
         },
         {
           path: '/home/someCharts',
@@ -92,22 +84,16 @@ export default new Router({
           meta: { title: '需求计划审批' ,requireAuth:true},
         },
         {
-          path: '/home/peopleTable',
-          name: 'peopleTable',
-          component : peopleTable,
+          path: '/system/user',
+          name: 'user',
+          component : user,
           meta:{ title: '人员管理' ,requireAuth:true }
         },
         {
-          path: '/home/deptList',
-          name: 'deptList',
-          component : deptList,
-          meta:{ title: '部门管理' ,requireAuth:true}
-        },
-        {
-          path: '/home/materialNum',
-          name: 'materialNum',
-          component : materialNum,
-          meta:{ title: '物资编码申请' ,requireAuth:true}
+          path: '/base/metadata',
+          name: 'metadata',
+          component : metadata,
+          meta:{ title: '编码管理' ,requireAuth:true}
         },
         {
           path: '/home/callme',

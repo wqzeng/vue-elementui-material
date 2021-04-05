@@ -2,7 +2,7 @@
   "name": "work",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "guojiayu <2434957426@qq.com>",
+  "author": "",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -14,6 +14,7 @@
     "echarts": "^4.2.1",
     "element-ui": "^2.11.1",
     "file-saver": "^2.0.2",
+    "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
@@ -55,7 +56,7 @@
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
+    "webpack-dev-server": "^2.11.5",
     "webpack-merge": "^4.1.0"
   },
   "engines": {

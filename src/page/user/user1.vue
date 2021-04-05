@@ -11,9 +11,6 @@
     </div>
     <!-- 表格 -->
     <div class="list">
-      <!-- <div class="search">
-        <el-input v-model="search" placeholder="请输入内容"></el-input>
-      </div>-->
 
       <el-table
         :data="user.slice((currentPage-1)*pagesize,currentPage*pagesize)"
