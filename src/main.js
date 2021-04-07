@@ -14,7 +14,7 @@ import Moment from 'moment'
 
 var axios = require('axios')
 
-axios.defaults.baseURL = 'http://localhost:8080/ims'
+axios.defaults.baseURL = process.env.BASE_URL
 
 Vue.prototype.$axios = axios
 Vue.prototype.$echarts = echarts

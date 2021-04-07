@@ -54,7 +54,7 @@ export default {
         ],
         password: [
           { required: true, message: "请输入密码", trigger: "blur" },
-          { max: 10, message: "不能大于10个字符", trigger: "blur" }
+          { max: 20, message: "不能大于20个字符", trigger: "blur" }
         ]
       }
     };

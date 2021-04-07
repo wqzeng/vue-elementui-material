@@ -20,8 +20,9 @@
                 </el-form-item>
                 <el-form-item label="性别">
                     <el-select v-model="formData.userSex" placeholder="请选择性别">
-                        <el-option label="男" value="1"></el-option>
-                        <el-option label="女" value="2"></el-option>
+                        <el-option :v-for="sexEnum"></el-option>
+<!--                        <el-option label="男" value="1"></el-option>-->
+<!--                        <el-option label="女" value="2"></el-option>-->
                     </el-select>
                 </el-form-item>
                 <el-form-item label="门店">
@@ -65,9 +66,14 @@
                     deptNo:''
                 },
                 title:'添加人员',
+                sexEnum:{
+                    1:'男',
+                    2:'女'
+                },
                 rules: {
                     userName: [{required: true, message: "请输入姓名", trigger: 'blur'}],
-                    loginName: [{required: true, message: "请输入登录名（英文或数字）", trigger: 'blur'}]
+                    loginName: [{required: true, message: "请输入登录名（英文或数字）", trigger: 'blur'},
+                        { max: 10, message: "不能大于10个字符", trigger: "blur" }]
                 }
             }
         },
