@@ -29,7 +29,7 @@ Vue.config.productionTip = false
 
 // 定义全局时间戳过滤器
 Vue.filter('formatDate', function(value) {
-  return Moment(value).format('YYYY-MM-DD HH:mm:ss')
+  return Moment(value).utc().format('YYYY-MM-DD HH:mm:ss')
 })
 
 /* eslint-disable no-new */

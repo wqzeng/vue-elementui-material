@@ -23,7 +23,11 @@
               {{sexEnum[scope.row.userSex]}}
             </template>
           </el-table-column>
-          <el-table-column label="门店" prop="deptNo"></el-table-column>
+          <el-table-column label="门店" prop="deptNo">
+            <template slot-scope="scope">
+              {{deptOption[scope.row.deptNo]}}
+            </template>
+          </el-table-column>
           <el-table-column label="操作" style="width: 36%;">
             <template slot-scope="scope">
               <el-button-group>
@@ -47,7 +51,7 @@
         </div>
       </el-card>
     </div>
-    <add-dialog v-if="showAddDialog" :rowData="rowData" @hideDialog="showAddDialog=false" @query="query()"></add-dialog>
+    <add-dialog v-if="showAddDialog" :rowData="rowData" :deptOption="deptOption" @hideDialog="showAddDialog=false" @query="query()"></add-dialog>
   </div>
 </template>
 
@@ -66,28 +70,32 @@
         sexEnum:{
           1:'男',
           2:'女'
-        }
+        },
+        deptOption:{}
       };
     },
     components: {
       addDialog
     },
+    computed: {
+    },
     created() {
       this.query()
     },
     methods: {
-      query() {
+      async query() {
         this.$axios.post("/user/query", {
-          pageNo: this.currentPage,
-          pageSize: this.pagesize
-        }).then(res => {
-          if (res.data) {
-            this.userList = res.data.data;
-            this.total = res.data.total;
-          }
-        }).catch(err=> {
-          this.$message.error("查询失败！稍后重试")
-        });
+            pageNo: this.currentPage,
+            pageSize: this.pagesize
+          }).then(res => {
+            if (res.data) {
+              this.userList = res.data.data;
+              this.total = res.data.total;
+            }
+          }).catch(err=> {
+            this.$message.error("查询失败！稍后重试")
+          })
+        await this.queryMetadataItem('MD')
       },
       handleSizeChange: function (size) {
         this.pagesize = size;
@@ -118,6 +126,19 @@
             this.$message.error("删除失败！稍后重试")
           });
         })
+      },
+      queryMetadataItem(code) {
+        this.$axios.post("/metadata/item/get", {
+            code: code
+          }).then(res => {
+          if (res.data.code === 200) {
+            this.deptOption=res.data.data
+          } else {
+            this.$message.error(res.data.message);
+          }
+        }).catch(err => {
+          this.$message.error("查询基础信息失败！请稍后重试")
+        });
       }
     }
   };
